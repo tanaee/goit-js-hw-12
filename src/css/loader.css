@@ -1,36 +1,42 @@
 .loader {
-    display: none;
-    width: 12px;
-    height: 12px;
+    width: 48px;
+    height: 48px;
+    border-width: 3px;
+    border-style: dashed solid solid dotted;
+    border-color: #00a2ff #00a2ff transparent #00a2ff;
     border-radius: 50%;
-    margin: 15px auto;
+    display: none;
     position: relative;
-    color: #FFF;
     box-sizing: border-box;
-    animation: animloader 2s linear infinite;
+    animation: rotation 1s linear infinite;
+    margin: 20px auto;
 }
 
-@keyframes animloader {
+.loader::after {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    left: 20px;
+    top: 31px;
+    border: 10px solid transparent;
+    border-right-color: #00a2ff;
+    transform: rotate(-40deg);
+}
+
+@keyframes rotation {
     0% {
-        box-shadow: 14px 0 0 -2px, 38px 0 0 -2px, -14px 0 0 -2px, -38px 0 0 -2px;
-    }
-
-    25% {
-        box-shadow: 14px 0 0 -2px, 38px 0 0 -2px, -14px 0 0 -2px, -38px 0 0 2px;
-    }
-
-    50% {
-        box-shadow: 14px 0 0 -2px, 38px 0 0 -2px, -14px 0 0 2px, -38px 0 0 -2px;
-    }
-
-    75% {
-        box-shadow: 14px 0 0 2px, 38px 0 0 -2px, -14px 0 0 -2px, -38px 0 0 -2px;
+        transform: rotate(0deg);
     }
 
     100% {
-        box-shadow: 14px 0 0 -2px, 38px 0 0 2px, -14px 0 0 -2px, -38px 0 0 -2px;
+        transform: rotate(360deg);
     }
 }
+
+.loader.visible {
+    display: block;
+}
+
 
 .loader.visible {
     display: block;
